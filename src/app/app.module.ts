@@ -10,12 +10,13 @@ import { SingleProductComponent } from './components/produits/single-product/sin
 import { AddProductComponent } from './components/produits/add-product/add-product.component';
 import { EditProductComponent } from './components/produits/edit-product/edit-product.component';
 import { CardComponent } from './components/produits/card/card.component';
-import { HeaderComponent } from './components/produits/partials/header/header.component';
-import { FooterComponent } from './components/produits/partials/footer/footer.component';
-import { HeaderPageComponent } from './components/produits/partials/header-page/header-page.component';
-import { QuickViewModalComponent } from './components/produits/partials/modal/quick-view-modal/quick-view-modal.component';
-import { AddToCartModalComponent } from './components/produits/partials/modal/add-to-cart-modal/add-to-cart-modal.component';
-import { DeleteProductModalComponent } from './components/produits/partials/modal/delete-product-modal/delete-product-modal.component';
+import { HeaderComponent } from './components/partials/header/header.component';
+import { FooterComponent } from './components/partials/footer/footer.component';
+import { HeaderPageComponent } from './components/partials/header-page/header-page.component';
+import { QuickViewModalComponent } from './components/partials/modal/quick-view-modal/quick-view-modal.component';
+import { AddToCartModalComponent } from './components/partials/modal/add-to-cart-modal/add-to-cart-modal.component';
+import { DeleteProductModalComponent } from './components/partials/modal/delete-product-modal/delete-product-modal.component';
+import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DeleteProductModalComponent } from './components/produits/partials/moda
     HeaderPageComponent,
     QuickViewModalComponent,
     AddToCartModalComponent,
-    DeleteProductModalComponent
+    DeleteProductModalComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
