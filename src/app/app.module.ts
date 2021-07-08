@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {  HttpClientModule } from "@angular/common/http";
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
@@ -19,6 +18,8 @@ import { AddToCartModalComponent } from './components/partials/modal/add-to-cart
 import { DeleteProductModalComponent } from './components/partials/modal/delete-product-modal/delete-product-modal.component';
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 import {  ReactiveFormsModule } from "@angular/forms";
+import { UsersComponent } from './components/users/users.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {  ReactiveFormsModule } from "@angular/forms";
     QuickViewModalComponent,
     AddToCartModalComponent,
     DeleteProductModalComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

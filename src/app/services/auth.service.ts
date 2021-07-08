@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { rejects } from 'assert';
-import { resolve } from 'dns';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -18,9 +16,17 @@ isAuth$ = new BehaviorSubject<boolean>(false);
 
   signup(email: string, password: string){
     return new Promise((resolve, reject)=>{
-      this.http.post(this.api+'/users/singup',{email: email, password: password}).subscribe(
-        ()=>{
-          //authentifier l'utilisateur
+      this.http.post(this.api+'/users',{email: email, password: password}).subscribe(
+        (signupData:any)=>{
+          if(signupData.status===201){
+             //authentifier l'utilisateur
+             this.signin(email, password)
+             .then(()=>{resolve(true)})
+             .catch((err)=>{reject(err)});
+          }else{
+            reject(signupData.message);
+          }
+
 
         },
        (err)=>{
@@ -32,11 +38,15 @@ isAuth$ = new BehaviorSubject<boolean>(false);
 
 
   }
-
   signin(email: string, password: string){
     return new Promise ((resolve, reject)=>{
       this.http.post(this.api+'/users/login',{email: email, password: password}).subscribe(
-         (authData:{taken :string, userId:string})=>{
+         (authData: any)=>{
+           this.token=authData.token;
+           this.userId=authData.userId;
+           this.isAuth$.next(true);
+           console.log(authData);
+           resolve(true);
 
          },
           (err)=>{
@@ -46,7 +56,6 @@ isAuth$ = new BehaviorSubject<boolean>(false);
     })
 
   }
-
   logout(){}
 
 }

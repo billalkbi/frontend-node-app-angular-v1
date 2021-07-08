@@ -25,6 +25,16 @@ errorMessage: string |undefined;
   onSubmit(){
     const email= this.signUpForm.get('email').value;
     const password= this.signUpForm.get('password').value;
+    this.auth.signup(email, password)
+    .then(()=>{
+      this.route.navigate(['/produits']);
+    })
+    .catch(
+       (err)=>{
+         this.errorMessage=err.message;
+       }
+    )
+    console.log(this.signUpForm.value)
 
   }
 
