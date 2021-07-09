@@ -3,9 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  api:'http://localhost:3000/pokedex'
+  production: true,
+  hmr: false,
+  ENDPOINTS:{
+  api:'api',}
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

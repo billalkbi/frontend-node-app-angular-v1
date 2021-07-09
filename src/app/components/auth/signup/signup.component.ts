@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,30 +12,34 @@ export class SignupComponent implements OnInit {
 signUpForm: any;
 errorMessage: string |undefined;
   constructor(private formBuilder : FormBuilder,
-              private route: Router,
+              private ngZone: NgZone,
+              private router: Router,
               private auth : AuthService) { }
 
   ngOnInit(): void {
     this.signUpForm= this.formBuilder.group({
-      email: [null,[Validators.required, Validators.email]],
-      password: [null,Validators.required]
+      firstname: this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
+      lastname : this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
+      dateBirth: this.formBuilder.control("",[ Validators.required]),
+      address : this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
+      username : this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
+      email : this.formBuilder.control("",[ Validators.required, Validators.email, Validators.minLength(5)]),
+      password : this.formBuilder.control("",[ Validators.required, Validators.minLength(10)]),
+
+
     });
   }
 
-  onSubmit(){
-    const email= this.signUpForm.get('email').value;
-    const password= this.signUpForm.get('password').value;
-    this.auth.signup(email, password)
-    .then(()=>{
-      this.route.navigate(['/produits']);
-    })
-    .catch(
-       (err)=>{
-         this.errorMessage=err.message;
-       }
-    )
-    console.log(this.signUpForm.value)
+  onSubmit(): any {
+    this.auth.signup(this.signUpForm.value)
+    .subscribe(() => {
+        console.log('Data added successfully!')
+        this.ngZone.run(() => this.router.navigateByUrl('/produits'))
+      }, (err) => {
+        this.errorMessage=err;
+        console.log(this.signUpForm.value);
 
+    });
   }
 
 }
