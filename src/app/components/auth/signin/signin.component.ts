@@ -27,7 +27,7 @@ errorMessage: string |undefined;
   onSubmit(): any {
     this.auth.signin(this.signInForm.value)
     .subscribe(() => {
-        console.log('Data added successfully!')
+        console.log('user connected ')
         this.ngZone.run(() => this.router.navigateByUrl('/produits'))
       }, (err) => {
         console.log(err);

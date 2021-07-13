@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable , throwError} from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { User } from '../models/users';
 //import { environment } from 'src/environments/environment';
 
@@ -9,7 +10,7 @@ import { User } from '../models/users';
   providedIn: 'root'
 })
 export class AuthService {
-  REST_API: string = 'http://localhost:3000/api';
+  REST_API: string = environment.ENDPOINTS.api;
 token: string | undefined;
 userId: string | undefined;
 isAuth$ = new BehaviorSubject<boolean>(false);

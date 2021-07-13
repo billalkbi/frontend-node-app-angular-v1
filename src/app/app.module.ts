@@ -19,6 +19,11 @@ import { DeleteProductModalComponent } from './components/partials/modal/delete-
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 import {  ReactiveFormsModule } from "@angular/forms";
 import { UsersComponent } from './components/users/users.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { AddProjectComponent } from './components/projects/add-project/add-project.component';
+import { EditUserComponent } from './components/users/edit-user/edit-user.component';
+
+
 
 
 @NgModule({
@@ -39,6 +44,11 @@ import { UsersComponent } from './components/users/users.component';
     DeleteProductModalComponent,
     NotFoundComponent,
     UsersComponent,
+    ProjectsComponent,
+    AddProjectComponent,
+    EditUserComponent,
+
+
   ],
   imports: [
     BrowserModule,

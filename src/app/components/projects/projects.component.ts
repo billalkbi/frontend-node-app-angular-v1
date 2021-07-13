@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'node-produits',
-  templateUrl: './produits.component.html',
-  styleUrls: ['./produits.component.css']
+  selector: 'node-projects',
+  templateUrl: './projects.component.html',
+  styleUrls: ['./projects.component.css']
 })
-export class ProduitsComponent implements OnInit {
-  ngOnInit(): void {
+export class ProjectsComponent implements OnInit {
 
+  constructor() { }
+
+  ngOnInit(): void {
   }
 
-  users = [
-    { idProject: 'Frank', ProjectName: 'Murphy', dateCraction: 'frank.murphy@test.com', description: 'adresse' , lesDashboard: '01/01/1111'  },
+  projects = [
+    { idProject: 'Frank', ProjectName: 'Murphy', category: 'Murphy', dateCraction: 'frank.murphy@test.com', description: 'adresse' , lesDashboard: '01/01/1111'  },
     { idProject: 'Frank', ProjectName: 'Murphy', dateCraction: 'frank.murphy@test.com', description: 'adresse' , lesDashboard: '01/01/1111'  },
     { idProject: 'Frank', ProjectName: 'Murphy', dateCraction: 'frank.murphy@test.com', description: 'adresse' , lesDashboard: '01/01/1111'  },
     { idProject: 'Frank', ProjectName: 'Murphy', dateCraction: 'frank.murphy@test.com', description: 'adresse' , lesDashboard: '01/01/1111'  },

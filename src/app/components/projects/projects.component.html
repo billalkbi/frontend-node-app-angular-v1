@@ -2,7 +2,7 @@
 <div class=" content">
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-    <a class="btn btn-md btn-primary " routerLink="/signup">
+    <a class="btn btn-md btn-primary " routerLink="/AddProject">
          crée un nouveau projet</a>
        </div>
   <div class=" row">
@@ -26,12 +26,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let user of users">
-                  <td>{{user.idProject}} </td>
-                  <td>{{user.ProjectName}}</td>
-                  <td>{{user.dateCraction}}</td>
-                  <td>{{user.description}} </td>
-                  <td>{{user.lesDashboard}}</td>
+                <tr *ngFor="let project of projects">
+                  <td>{{project.idProject}} </td>
+                  <td>{{project.ProjectName}}</td>
+                  <td>{{project.category}}</td>
+                  <td>{{project.dateCraction}}</td>
+                  <td>{{project.description}} </td>
+                  <td>{{project.lesDashboard}}</td>
                   <td><i class="fas fa-edit"> </i></td>
                   <td> <i class="fas fa-trash"></i> </td>
 
@@ -42,6 +43,7 @@
         </div>
       </div>
     </div>
+
 
 
 

@@ -6,7 +6,7 @@ export const environment = {
   production: true,
   hmr: false,
   ENDPOINTS:{
-  api:'api',}
+  api:'/api',}
 };
 
 

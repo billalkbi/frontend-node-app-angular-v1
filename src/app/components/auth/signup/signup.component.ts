@@ -21,7 +21,7 @@ errorMessage: string |undefined;
       firstname: this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
       lastname : this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
       dateBirth: this.formBuilder.control("",[ Validators.required]),
-      address : this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
+      adresse : this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
       username : this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
       email : this.formBuilder.control("",[ Validators.required, Validators.email, Validators.minLength(5)]),
       password : this.formBuilder.control("",[ Validators.required, Validators.minLength(10)]),

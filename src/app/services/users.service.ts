@@ -6,7 +6,7 @@ import { User } from '../models/users';
   providedIn: 'root'
 })
 export class UsersService {
-
+user:any;
   users : User[]=[];
   userSub =new Subject<User[]> ();
 
@@ -19,5 +19,9 @@ export class UsersService {
   addUser(user: User) : void{
     this.users.push(user);
     this.emitUsers();
+  }
+
+  getUser(id:any): User{
+    return this.user;
   }
 }

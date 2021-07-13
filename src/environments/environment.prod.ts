@@ -4,6 +4,6 @@ export const environment = {
   ENDPOINTS:{
 
 
-  api:'api/users'
+  api:'/api'
   }
 };

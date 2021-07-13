@@ -1,0 +1,59 @@
+
+<div class="register pt-80 pb-80">
+  <div class="container">
+      <div class="row">
+          <!--  <mat-spinner *ngIf="loading"></mat-spinner> -->
+          <div class="col-12" >
+              <h3 class="title text-capitalize mb-30 pb-25">Crée un projet</h3>
+              <div class="log-in-form">
+                  <form class="personal-information" [formGroup]="AddProjectForm">
+
+                      <div class="alert alert-danger" *ngIf="errorMessage" > {{errorMessage}}</div>
+
+                      <div class="form-group row">
+                        <label for="ProjectName" class="col-md-3 col-form-label">nom du projet</label>
+                        <div class="col-md-6">
+                            <input type="text" id="ProjectName" formControlName="ProjectName" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="category" class="col-md-3 col-form-label">catégorie</label>
+                      <div class="col-md-6">
+                          <input type="text" id="category" formControlName="category" class="form-control">
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="dateCraction" class="col-md-3 col-form-label">date de creation</label>
+                    <div class="col-md-6">
+                      <input type="date" class="form-control"
+                      value="03-03-2019" min="01-01-1950" max="31-12-1999"  formControlName="dateCraction" required >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="desciption" class="col-md-3 col-form-label">desciption</label>
+                  <div class="col-md-6">
+                      <input type="text" id="desciption" formControlName="desciption" class="form-control">
+                  </div>
+              </div>
+
+          <div class="form-group row pb-3 text-center">
+            <div class="col-md-6 offset-md-3">
+                <div class="login-form-links">
+
+                    <div class="sign-btn">
+                       <button   class="btn theme-btn--dark1 btn--md"
+                                  [disabled]="AddProjectForm.invalid"
+                                  (click)="onSubmit()">ajouter le projet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

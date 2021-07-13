@@ -1,1 +1,92 @@
-<p>users works!</p>
+
+
+<div class="register pt-80 pb-80">
+  <div class="container">
+    <div class="row">
+          <!--  <mat-spinner *ngIf="loading"></mat-spinner> -->
+      <div class="col-12" >
+
+              <h3 class="title text-capitalize mb-30 pb-25">liste des utilisateur</h3>
+              <div class="container">
+
+
+                  <form class="form-inline" >
+
+                    <div class="form-group col-md-9">
+
+                      <div class="col-md-3">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      </div>
+                    </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+                      <div class="form-group col-md-9">
+
+                        <div class="col-md-3">
+                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </div>
+                       </div>
+
+                          <a class="btn btn-md btn-primary " routerLink="/AddProject">
+                               ajouter un utilisateur</a>
+                    </div>
+
+
+                  </form>
+
+
+
+              </div>
+
+        <div class=" content">
+
+          <div class=" row">
+            <div class=" col-md-12">
+              <div class=" card">
+
+                <div class=" card-body">
+                  <div class=" table-responsive">
+                   <table class=" table tablesorter" id="">
+                     <thead class=" text-primary">
+                       <tr>
+                         <th>firstName</th>
+                         <th>lastName</th>
+                         <th>date naissance  </th>
+                         <th>adresse </th>
+                         <th>email </th>
+                         <th>username</th>
+                         <th>password </th>
+                         <th >edit</th>
+                         <th >delete</th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       <tr *ngFor="let user of users">
+                           <td>{{user.firstName}} </td>
+                           <td>{{user.lastName}}</td>
+                           <td>{{user.dateBirth}}</td>
+                           <td>{{user.address}} </td>
+                           <td>{{user.email}}</td>
+                           <td>{{user.username}}</td>
+                           <td>{{user.password}}</td>
+                           <td> <a (click)="goEdit(user)" ><i class="fas fa-edit"> </i> </a></td>
+
+
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+   </div>
+  </div>
+</div>
+
+
+
+
+
