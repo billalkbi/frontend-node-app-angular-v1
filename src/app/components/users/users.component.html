@@ -27,7 +27,7 @@
                         </div>
                        </div>
 
-                          <a class="btn btn-md btn-primary " routerLink="/AddProject">
+                          <a class="btn btn-md btn-primary " routerLink="/signup">
                                ajouter un utilisateur</a>
                     </div>
 
@@ -49,27 +49,30 @@
                    <table class=" table tablesorter" id="">
                      <thead class=" text-primary">
                        <tr>
+                         <th>id</th>
                          <th>firstName</th>
                          <th>lastName</th>
-                         <th>date naissance  </th>
-                         <th>adresse </th>
                          <th>email </th>
+                         <th>adresse </th>
+                         <th>date naissance</th>
+                         <th>type-user </th>
                          <th>username</th>
-                         <th>password </th>
                          <th >edit</th>
                          <th >delete</th>
                        </tr>
                      </thead>
                      <tbody>
-                       <tr *ngFor="let user of users">
-                           <td>{{user.firstName}} </td>
-                           <td>{{user.lastName}}</td>
-                           <td>{{user.dateBirth}}</td>
-                           <td>{{user.address}} </td>
+                      <tr *ngFor="let user of users">
+                           <td>{{user.id}}</td>
+                           <td>{{user.firstname}} </td>
+                           <td>{{user.lastname}}</td>
                            <td>{{user.email}}</td>
+                           <td>{{user.adresse}} </td>
+                           <td>{{user.dateBirth}}</td>
+                           <td>{{user.type}}</td>
                            <td>{{user.username}}</td>
-                           <td>{{user.password}}</td>
-                           <td> <a (click)="goEdit(user)" ><i class="fas fa-edit"> </i> </a></td>
+                           <td> <a (click)="editUser( user.id)" ><i class="fas fa-edit"> </i> </a></td>
+                           <td> <a (click)="deleteUser(user.id)" ><i class="fas fa-trash"> </i> </a></td>
 
 
                         </tr>

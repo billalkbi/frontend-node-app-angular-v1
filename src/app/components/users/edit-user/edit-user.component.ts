@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
-import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/models/users';
-
+import { Component,  NgZone,  OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router,  } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -11,24 +9,55 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-  signUpForm: any;
-  errorMessage: string |undefined;
-  user : User |undefined;
+
+  getId: any;
+  errorMessage: any;
+
+  editUserForm= new FormGroup({
+    firstname: new FormControl(''),
+    adresse: new FormControl(''),
+    lastname: new FormControl(''),
+    dateBirth: new FormControl(''),
+    email: new FormControl(''),
+    username: new FormControl(''),
+    password: new FormControl(''),
+
+  })
 
 
 
 
+  constructor(private activatedRoute: ActivatedRoute,
+              private usersService: UsersService,
+              private ngZone: NgZone,
+              private router: Router) {}
 
-  constructor(
-    private route: ActivatedRoute,
-    private usersService: UsersService) {}
-
-  ngOnInit(): void {
-    let id = +this.route.snapshot.params['id'];
-    this.usersService.getUser(id);
-    /*.subscribe((user: any)=> this.user= user );*/
+  ngOnInit() {
+    this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+     this.usersService.getUser(this.getId)
+       .subscribe(user=>{
+         this.editUserForm= new FormGroup({
+           firstname: new FormControl(user['firstname']),
+           adresse: new FormControl(user['adresse']),
+            lastname: new FormControl(user['lastname']),
+            dateBirth: new FormControl(user['dateBirth']),
+            username: new FormControl(user['username']),
+            email: new FormControl(user['email']),
+            password: new FormControl(user['password']),
+         })
+       })
   }
-  onSubmit(){}
 
+  onSubmit(): any {
+    this.usersService.updateUser(this.getId,this.editUserForm.value)
+    .subscribe(() => {
+        console.log('Data updated successfully!')
 
+      }, (err) => {
+        this.errorMessage=err;
+        console.log(this.editUserForm.value);
+
+    });
+  }
 }
+

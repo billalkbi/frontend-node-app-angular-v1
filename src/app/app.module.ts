@@ -22,6 +22,9 @@ import { UsersComponent } from './components/users/users.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AddProjectComponent } from './components/projects/add-project/add-project.component';
 import { EditUserComponent } from './components/users/edit-user/edit-user.component';
+import { DeleteUserComponent } from './components/users/delete-user/delete-user.component';
+
+
 
 
 
@@ -47,6 +50,9 @@ import { EditUserComponent } from './components/users/edit-user/edit-user.compon
     ProjectsComponent,
     AddProjectComponent,
     EditUserComponent,
+    DeleteUserComponent,
+
+
 
 
   ],

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
 import { User } from 'src/app/models/users';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -9,27 +11,34 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  users:User [] |undefined;
 
   constructor( private router: Router,
-               private usersSrvce: UsersService) { }
+               private usersService: UsersService) { }
 
   ngOnInit(): void {
+    this.getUsers();
   }
-  users = [
-    { firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com', address: 'adresse' , dateBirth: '01/01/1111' , username: 'Username' , password: 'password' },
-    { firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com', address: 'adresse' , dateBirth: '01/01/1111' , username: 'Username' , password: 'password' },
-    {firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com', address: 'adresse' , dateBirth: '01/01/1111' , username: 'Username' , password: 'password'},
-    { firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com', address: 'adresse' , dateBirth: '01/01/1111' , username: 'Username' , password: 'password' },
-    {firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com', address: 'adresse' , dateBirth: '01/01/1111' , username: 'Username' , password: 'password'}
-];
 
-getUsers(){
+
+
+getUsers() : void{
+    this.usersService.getUsers()
+            .pipe(first())
+            .subscribe(users => this.users = users);
+
+
+  }
+
+
+editUser( id :string):void {
+  let link=['edit-user/'+id];
+  this.router.navigate(link);
 
 }
-goEdit(user: any):void {
-  /*let link=['edit-user/'+user.username];
-  this.router.navigate(link);*/
-  this.router.navigateByUrl('edit-user')
+deleteUser(id:string){
+  let link=['delete-user/'+id];
+  this.router.navigate(link);
 
 }
 }
