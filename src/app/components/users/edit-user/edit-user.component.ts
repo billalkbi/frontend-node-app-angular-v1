@@ -29,8 +29,7 @@ export class EditUserComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private usersService: UsersService,
-              private ngZone: NgZone,
-              private router: Router) {}
+) {}
 
   ngOnInit() {
     this.getId = this.activatedRoute.snapshot.paramMap.get('id');

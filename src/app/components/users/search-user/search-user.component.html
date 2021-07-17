@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col s12 m6 offset-m3">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <div class="card-content">
+        <div class="input-field">
+          <input class="form-control mr-sm-2"  #searchBox (keyup)="search(searchBox.value)"
+            placeholder="Rechercher "/>
+        </div>
+
+        <div class="collection">
+          <ul>
+
+
+
+          <li *ngFor="let user of users$ | async"
+            (click)="gotoDetail(user)" class="collection-item">
+              <p>   {{ user.firstname  }} {{ user.lastname  }}  </p>
+          </li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--<form class="form-inline" >
+
+  <div class="form-group col-md-9">
+   <div class="col-md-3">
+      <input #searchBox class="form-control mr-sm-2"placeholder="Search" (keyup)="search(searchBox.value)">
+    </div>
+  </div>
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+     <div class="form-group col-md-9">
+
+      <div class="col-md-3">
+        <button class="btn btn-outline-success my-2 my-sm-0" >Search</button>
+
+       </div>
+     </div>
+
+        <a class="btn btn-md btn-primary " routerLink="/signup">ajouter un utilisateur</a>
+  </div>
+</form>-->

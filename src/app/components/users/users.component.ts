@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+
 import { first } from 'rxjs/operators';
 import { User } from 'src/app/models/users';
 import { UsersService } from 'src/app/services/users.service';
@@ -17,29 +17,22 @@ export class UsersComponent implements OnInit {
                private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.getUsers();
+   this.getUsers();
   }
-
-
-
-getUsers() : void{
+  getUsers() : void{
     this.usersService.getUsers()
             .pipe(first())
             .subscribe(users => this.users = users);
-
-
   }
 
+  editUser( id :string):void {
+     let link=['edit-user/'+id];
+     this.router.navigate(link);
+  }
 
-editUser( id :string):void {
-  let link=['edit-user/'+id];
-  this.router.navigate(link);
-
-}
-deleteUser(id:string){
-  let link=['delete-user/'+id];
-  this.router.navigate(link);
-
-}
+  deleteUser(id:string){
+    let link=['delete-user/'+id];
+    this.router.navigate(link);
+  }
 }
 
