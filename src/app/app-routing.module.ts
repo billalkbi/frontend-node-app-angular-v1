@@ -6,21 +6,23 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
 import { EditProductComponent } from './components/produits/edit-product/edit-product.component';
 import { AddProjectComponent } from './components/projects/add-project/add-project.component';
 import { ProjectsComponent } from './components/projects/projects.component';
-import { DeleteUserComponent } from './components/users/delete-user/delete-user.component';
-import { EditUserComponent } from './components/users/edit-user/edit-user.component';
+import { AddUserDialogComponent } from './components/users/add-user/add-user.dialog.component';
+import { DeleteUserDialogComponent } from './components/users/delete-user/delete-user.dialog.component';
+import { EditUserDialogComponent } from './components/users/edit-user/edit-user.dialog.component';
 import { UsersComponent } from './components/users/users.component';
+
 
 
 const routes: Routes = [
   {path: 'signup', component: SignupComponent},
-
   {path: 'signin', component: SigninComponent},
   {path: 'projects', component: ProjectsComponent},
   {path: 'add-project', component: AddProjectComponent},
   {path: 'edit-product/:id', component: EditProductComponent },
   {path: 'users', component: UsersComponent },
-  {path: 'edit-user/:id', component: EditUserComponent},
-  {path: 'delete-user/:id', component: DeleteUserComponent},
+  {path: 'add-user', component: AddUserDialogComponent},
+  {path: 'edit-user/:id', component: EditUserDialogComponent},
+  {path: 'delete-user/:id', component: DeleteUserDialogComponent},
   {path: '**', component: NotFoundComponent}
 
 ];

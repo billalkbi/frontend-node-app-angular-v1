@@ -21,11 +21,20 @@ import {  ReactiveFormsModule } from "@angular/forms";
 import { UsersComponent } from './components/users/users.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AddProjectComponent } from './components/projects/add-project/add-project.component';
-import { EditUserComponent } from './components/users/edit-user/edit-user.component';
-import { DeleteUserComponent } from './components/users/delete-user/delete-user.component';
+import { EditUserDialogComponent } from './components/users/edit-user/edit-user.dialog.component';
+import { DeleteUserDialogComponent } from './components/users/delete-user/delete-user.dialog.component';
 import { SearchUserComponent } from './components/users/search-user/search-user.component';
-
-
+import { AddUserDialogComponent } from './components/users/add-user/add-user.dialog.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatGridListModule } from '@angular/material/grid-list'
 
 
 
@@ -50,19 +59,33 @@ import { SearchUserComponent } from './components/users/search-user/search-user.
     UsersComponent,
     ProjectsComponent,
     AddProjectComponent,
-    EditUserComponent,
-    DeleteUserComponent,
+    EditUserDialogComponent,
+    DeleteUserDialogComponent,
     SearchUserComponent,
-
-
-
+    AddUserDialogComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatSortModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatPaginatorModule,
+    MatDialogModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatGridListModule,
+
+  ],
+  entryComponents: [
+    AddUserDialogComponent,
+    EditUserDialogComponent,
+    DeleteUserDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

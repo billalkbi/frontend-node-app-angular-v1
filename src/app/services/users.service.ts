@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Observable, Subject, throwError,of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/users';
 
@@ -10,10 +11,7 @@ import { User } from '../models/users';
 })
 export class UsersService {
   REST_API: string = environment.ENDPOINTS.api
-
-  users : User[]=[];
-  userSub =new Subject<User[]> ();
-
+  userData : User[]=[];
   constructor(private http: HttpClient) { }
 
   private log(log: string) {
@@ -40,15 +38,13 @@ export class UsersService {
   }
 
   getUsers() {
-    return this.http.get<User[]>(`${this.REST_API}/users`).pipe(
-        catchError(this.handleError<any>('getUsers'))
-      )
-}
-
+    return this.http.get<User[]>(`${this.REST_API}/users`)
+  }
 
   getUser(id: string): Observable<User> {
     const url = `${this.REST_API}/users/${id}`;
     return this.http.get<User>(url).pipe(
+
       catchError(this.handleError<any>('getUser'))
     );
 

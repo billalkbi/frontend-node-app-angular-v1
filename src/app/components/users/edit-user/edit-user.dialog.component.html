@@ -1,0 +1,167 @@
+
+  <h3 mat-dialog-title>identifiant de l'utilisateur: {{id}}</h3>
+
+  <form class="mat-dialog-content"   [formGroup]="userEditForm" >
+
+<!--firstname+lastname-->
+    <div class="example-container">
+
+      <mat-form-field appearance="fill" >
+        <mat-label>firstname</mat-label>
+        <input matInput formControlName="firstname">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" >
+        <mat-label>lastname</mat-label>
+        <input matInput formControlName="lastname">
+      </mat-form-field>
+    </div>
+<!--adresse et dateBirth-->
+    <div class="example-container">
+
+      <mat-form-field appearance="fill" >
+        <mat-label>adresse</mat-label>
+        <input matInput formControlName="adresse">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" >
+        <mat-label>date de nessance</mat-label>
+        <input matInput value="dateBirth">
+      </mat-form-field>
+
+    </div>
+<!--username et mot de passe-->
+    <div class="example-container">
+
+      <mat-form-field appearance="fill" >
+        <mat-label>username</mat-label>
+        <input matInput formControlName="username">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" >
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-button  [disabled]="userEditForm.invalid" [mat-dialog-close]="1" (click)="saveEdit()">sauvgarder</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">quitter</button>
+    </div>
+  </form>
+
+
+
+
+
+
+<!--<mat-toolbar>
+  <span>"identifiant de l'itilisateur:"{{id}}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onNoClick()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form [formGroup]="userEditForm" class="normal-form" (submit)="saveEdit()">
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <input type="hidden" formControlName="firstname" matInput placeholder="firstname*">
+        <mat-form-field>
+          <input formControlName="lastname"  matInput placeholder="lastname*">
+          <mat-error>ce champ est obligatoire .</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="email" matInput placeholder="Email">
+          <mat-error>Invalid email address.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="username" matInput placeholder="username*">
+          <mat-error>Invalid email address.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="password" matInput placeholder="password">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</form>
+
+ <div class="container">
+  <h3 mat-dialog-title>identifiant de l'utilisateur {{userEditForm.firstname}</h3>
+
+
+    <form  class="personal-information" [formGroup]="userEditForm">
+
+      <div class="alert alert-danger" *ngIf="errorMessage" > {{errorMessage}}</div>
+
+        <div class="form-group row">
+          <label for="lastname" class="col-md-3 col-form-label">lastname</label>
+          <div class="col-md-6">
+              <input type="text" id="lastname" class="form-control"  formControlName="lastname" >
+          </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="firstname" class="col-md-3 col-form-label">firstname</label>
+        <div class="col-md-6">
+            <input type="text" id="firstname" class="form-control"  formControlName="firstname">
+        </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="dateBirth" class="col-md-3 col-form-label">date de naissance</label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" formControlName="dateBirth" required >
+      </div>
+  </div>
+
+  <div class="form-group row">
+     <label for="address" class="col-md-3 col-form-label">adresse</label>
+    <div class="col-md-6">
+        <input type="text" id="adresse" formControlName="adresse"  class="form-control">
+    </div>
+</div>
+
+<div class="form-group row">
+  <label for="username" class="col-md-3 col-form-label">username</label>
+  <div class="col-md-6">
+      <input type="text" id="username" formControlName="username" class="form-control">
+  </div>
+</div>
+
+<div class="form-group row">
+<label for="email" class="col-md-3 col-form-label">Email</label>
+<div class="col-md-6">
+    <input type="email" id="email" formControlName="email" class="form-control">
+</div>
+</div>
+
+<div class="form-group row">
+<label for="Password" class="col-md-3 col-form-label">Password</label>
+<div class="col-md-6">
+    <div class="input-group mb-2 mr-sm-2">
+        <input type="password" formControlName="password" class="form-control" id="Password">
+
+    </div>
+</div>
+</div>
+
+<div class="form-group row pb-3 text-center">
+<div class="col-md-6 offset-md-3">
+  <div class="login-form-links">
+
+      <div class="sign-btn">
+         <button   class="btn theme-btn--dark1 btn--md"(click)="saveEdit()" >
+            enregistrer les modification</button>
+      </div>
+  </div>
+</div>
+</div>
+</form>
+
+</div>
+
+-->

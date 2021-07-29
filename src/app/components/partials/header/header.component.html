@@ -3,37 +3,18 @@
 
 <header>
 
+  <mat-toolbar color="primary" >
+    <mat-icon> insert_chart</mat-icon>
+ dataviz
+ <div class="spacer" >
+    <a mat-button  routerLink="/"> acceuil </a>
+    <a mat-button routerLink="/users">utilisateurs</a>
+    <a mat-button routerLink="/projet"> projes</a>
+    <a mat-button routerLink="/">dashboard</a>
+</div>
+    <a mat-raised-button color="accent" routerLink="/signin">se connecter</a>
+
+  </mat-toolbar>
 
 
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-  <div class="col-sm-3">
-    <h4 class="d-flex align-items-center justify-content-center "> nom de l'application</h4>
-  </div>
-
-  <div class="collapse navbar-collapse" >
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/"> acceuil <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/projects"> mes projet</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/add-project">crée un  projet</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/users">liste des utilisateur</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/signup">ajouter un utilisateur</a>
-      </li>
-
-    </ul>
-
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/signin">se connecter</a>
-    </li>
-
-  </div></nav>
 </header>
