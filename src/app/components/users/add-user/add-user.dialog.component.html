@@ -1,53 +1,92 @@
+
 <h3 mat-dialog-title>ajouter un utilisateur</h3>
 
-  <form class="mat-dialog-content"   [formGroup]="signUpForm" >
+<mat-card>
+  <mat-card-content>
 
-<!--firstname+lastname-->
-    <div class="example-container">
+    <form class="example-form" [formGroup]="signUpForm">
 
-      <mat-form-field appearance="fill" >
-        <mat-label>firstname</mat-label>
-        <input matInput formControlName="firstname">
-      </mat-form-field>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Firstname</mat-label>
+                <input matInput formControlName="firstname">
+              </mat-form-field>
+           </td>
+           <td>
+             <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>lastname</mat-label>
+              <input matInput  formControlName="lastname">
+             </mat-form-field>
+           </td>
+         </tr>
+        </table>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput  formControlName="adresse">
+        </mat-form-field>
 
-      <mat-form-field appearance="fill" >
-        <mat-label>lastname</mat-label>
-        <input matInput formControlName="lastname">
-      </mat-form-field>
-    </div>
-<!--adresse et dateBirth-->
-    <div class="example-container">
+        <table class="example-full-width" cellspacing="0">
+         <tr>
+           <td>
+             <mat-form-field class="example-full-width" appearance="fill">
+               <mat-label>date de nessaince</mat-label>
+               <input matInput type="date" formControlName="dateBirth">
+             </mat-form-field>
+           </td>
+           <td>
+             <mat-form-field class="example-full-width" appearance="fill">
+               <mat-label>type user</mat-label>
+               <input matInput  formControlName="type">
+             </mat-form-field>
+           </td>
+         </tr>
+        </table>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>email</mat-label>
+          <input matInput  formControlName="email">
+        </mat-form-field>
 
-      <mat-form-field appearance="fill" >
-        <mat-label>adresse</mat-label>
-        <input matInput formControlName="adresse">
-      </mat-form-field>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>username</mat-label>
+                <input matInput  formControlName="username">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" >
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+         </table>
 
-      <mat-form-field appearance="fill" >
-        <mat-label>date de nessance</mat-label>
-        <input matInput formControlName="dateBirth">
-      </mat-form-field>
+         <div mat-dialog-actions>
+          <button mat-button  [disabled]="signUpForm.invalid" [mat-dialog-close]="1" (click)="saveAdd()">sauvgarder</button>
+          <button mat-button (click)="onNoClick()" tabindex="-1">quitter</button>
+        </div>
+      </form>
 
-    </div>
-<!--username et mot de passe-->
-    <div class="example-container">
 
-      <mat-form-field appearance="fill" >
-        <mat-label>username</mat-label>
-        <input matInput formControlName="username">
-      </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" >
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
+  </mat-card-content>
+</mat-card>
 
-    <div mat-dialog-actions>
-      <button mat-button  [disabled]="!signUpForm.valid" [mat-dialog-close]="1" (click)="saveAdd()">sauvgarder</button>
-      <button mat-button (click)="onNoClick()" tabindex="-1">quitter</button>
-    </div>
-  </form>
+
+
+
+
+
+
+
+
+
+
+

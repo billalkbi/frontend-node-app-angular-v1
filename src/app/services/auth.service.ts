@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable , throwError} from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { BehaviorSubject, Observable , of, throwError} from 'rxjs';
+import { catchError, delay, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/users';
 //import { environment } from 'src/environments/environment';
@@ -11,19 +11,17 @@ import { User } from '../models/users';
 })
 export class AuthService {
   REST_API: string = environment.ENDPOINTS.api;
-token: string | undefined;
-userId: string | undefined;
-isAuth$ = new BehaviorSubject<boolean>(false);
+
 
   constructor(private http: HttpClient) { }
 
-  signin(user: User): Observable<any> {
+
+	// Une méthode de connexion
+	login(signInForm: any) {
     let API_URL = `${this.REST_API}/login`;
-    return this.http.post(API_URL,user)
-      .pipe(
-        catchError(this.handleError)
-      )
-  }
+    return this.http.post(API_URL,signInForm);
+	}
+
 
   signup(user: User): Observable<any> {
     let API_URL = `${this.REST_API}/users`;

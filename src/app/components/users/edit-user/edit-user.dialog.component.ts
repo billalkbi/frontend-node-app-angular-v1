@@ -17,14 +17,14 @@ export class EditUserDialogComponent implements OnInit {
     firstname: new FormControl(''),
     lastname: new FormControl(''),
     adresse: new FormControl(''),
+    type: new FormControl(''),
     dateBirth: new FormControl(''),
     email: new FormControl(''),
     username: new FormControl(''),
     password: new FormControl(''),
 
   })
-  constructor(private formBuilder: FormBuilder,
-              private usersService: UsersService,
+  constructor(private usersService: UsersService,
               public dialogRef: MatDialogRef<EditUserDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public id: any
 ) { }
@@ -42,8 +42,9 @@ onNoClick(): void {
           firstname: new FormControl(user['firstname'],[ Validators.required, Validators.minLength(5)]),
           lastname: new FormControl(user['lastname'],[ Validators.required, Validators.minLength(5)]),
           adresse: new FormControl(user['adresse'],[ Validators.required, Validators.minLength(5)]),
+          type :new FormControl(user['type'],[ Validators.required]),
           dateBirth: new FormControl(user['dateBirth'],[ Validators.required,]),
-           username: new FormControl(user['username'],[ Validators.required, Validators.minLength(10)]),
+           username: new FormControl(user['username'],[ Validators.required, Validators.minLength(5)]),
            email: new FormControl(user['email'],[ Validators.required, Validators.email, Validators.minLength(5)]),
            password: new FormControl(user['password']),
         })
@@ -63,13 +64,11 @@ onNoClick(): void {
        });
 
   this.dialogRef.close();
-  this.refreche();
+
 
   }
 
-  refreche(){
-    this.usersService.getUsers;
-  }
+
 
 
 }

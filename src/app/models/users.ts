@@ -1,9 +1,7 @@
 
 
 export class User{
-  subscribe(arg0: (user: any) => any) {
-    throw new Error('Method not implemented.');
-  }
+
   constructor(public id: string,
               public firstname: string,
               public lastname: string,
@@ -15,7 +13,5 @@ export class User{
               public password : string,
 
 
-              ){
-
-              }
+              ){}
 }

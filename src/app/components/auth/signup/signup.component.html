@@ -1,86 +1,78 @@
 
-<div class="register pt-80 pb-80">
-  <div class="container">
-      <div class="row">
-          <!--  <mat-spinner *ngIf="loading"></mat-spinner> -->
-          <div class="col-12" >
-              <h3 class="title text-capitalize mb-30 pb-25">crée un compte</h3>
-              <div class="log-in-form">
-                  <form class="personal-information" [formGroup]="signUpForm">
-                      <div class="order-asguest theme1 mb-3">
-                          <span>vous avez déjà un compte?</span>
-                          <a class="text-muted hover-color" routerLink="/signin">connectez-vous!</a>
-                      </div>
-                      <div class="alert alert-danger" *ngIf="errorMessage" > {{errorMessage}}</div>
+<mat-card>
+  <mat-card-content>
 
-                      <div class="form-group row">
-                        <label for="lastname" class="col-md-3 col-form-label">lastname</label>
-                        <div class="col-md-6">
-                            <input type="text" id="lastname" formControlName="lastname" class="form-control">
-                        </div>
-                    </div>
+    <form class="example-form" [formGroup]="signUpForm">
 
-                    <div class="form-group row">
-                      <label for="firstname" class="col-md-3 col-form-label">firstname</label>
-                      <div class="col-md-6">
-                          <input type="text" id="firstname" formControlName="firstname" class="form-control">
-                      </div>
-                  </div>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Firstname</mat-label>
+                <input matInput formControlName="firstname">
+              </mat-form-field>
+           </td>
+           <td>
+             <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>lastname</mat-label>
+              <input matInput  formControlName="lastname">
+             </mat-form-field>
+           </td>
+         </tr>
+        </table>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput  formControlName="adresse">
+        </mat-form-field>
 
-                  <div class="form-group row">
-                    <label for="dateBirth" class="col-md-3 col-form-label">date de naissance</label>
-                    <div class="col-md-6">
-                      <input type="date" class="form-control"
-                      value="03-03-2019" min="01-01-1950" max="31-12-1999"  formControlName="dateBirth" required >
-                    </div>
-                </div>
+        <table class="example-full-width" cellspacing="0">
+         <tr>
+           <td>
+             <mat-form-field class="example-full-width" appearance="fill">
+               <mat-label>date de nessaince</mat-label>
+               <input matInput type="date" formControlName="dateBirth">
+             </mat-form-field>
+           </td>
+           <td>
+             <mat-form-field class="example-full-width" appearance="fill">
+               <mat-label>type user</mat-label>
+               <input matInput  formControlName="type">
+             </mat-form-field>
+           </td>
+         </tr>
+        </table>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>email</mat-label>
+          <input matInput  formControlName="email">
+        </mat-form-field>
 
-                <div class="form-group row">
-                  <label for="address" class="col-md-3 col-form-label">adresse</label>
-                  <div class="col-md-6">
-                      <input type="text" id="address" formControlName="adresse" class="form-control">
-                  </div>
-              </div>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>username</mat-label>
+                <input matInput  formControlName="username">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" >
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </td>
+          </tr>
+         </table>
 
-              <div class="form-group row">
-                <label for="username" class="col-md-3 col-form-label">username</label>
-                <div class="col-md-6">
-                    <input type="text" id="username" formControlName="username" class="form-control">
-                </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="email" class="col-md-3 col-form-label">Email</label>
-              <div class="col-md-6">
-                  <input type="email" id="email" formControlName="email" class="form-control">
-              </div>
-          </div>
-
-          <div class="form-group row">
-              <label for="Password" class="col-md-3 col-form-label">Password</label>
-              <div class="col-md-6">
-                  <div class="input-group mb-2 mr-sm-2">
-                      <input type="password" formControlName="password" class="form-control" id="Password">
-
-                  </div>
-              </div>
-          </div>
-
-          <div class="form-group row pb-3 text-center">
-            <div class="col-md-6 offset-md-3">
-                <div class="login-form-links">
-
-                    <div class="sign-btn">
-                       <button   class="btn theme-btn--dark1 btn--md"
-                                  [disabled]="signUpForm.invalid"
-                                  (click)="onSubmit()">inscription</button>
-                    </div>
-                </div>
-            </div>
+         <div mat-dialog-actions>
+          <button mat-button  [disabled]="signUpForm.invalid" [mat-dialog-close]="1" (click)="saveAdd()">sauvgarder</button>
         </div>
-        </form>
-              </div>
-          </div>
+      </form>
+      <div class="d-sm-flex align-items-left  mb-4">
+
+        <a  mat-button routerLink="/signin">se connecter</a>
       </div>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>

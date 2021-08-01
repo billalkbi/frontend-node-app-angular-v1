@@ -8,30 +8,34 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
-export class SigninComponent implements OnInit {
-
-  signInForm: any;
-errorMessage: string |undefined;
+export class SigninComponent implements OnInit  {
+  signInForm : any;
+  typeUser:any;
+   hide:any= true;
+   errorMessage: any;
   constructor(private formBuilder : FormBuilder,
-              private ngZone: NgZone,
               private router: Router,
-              private auth : AuthService) { }
+              public authService : AuthService) { }
 
-  ngOnInit(): void {
-    this.signInForm= this.formBuilder.group({
-      email: [null,[Validators.required, Validators.email]],
-      password: [null,Validators.required]
-    });
-  }
+ngOnInit(): void{
+  this.signInForm= this.formBuilder.group({
+    username : this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
+    password : this.formBuilder.control("",[ Validators.required, Validators.minLength(10)])
+  })
+}
 
-  onSubmit(): any {
-    this.auth.signin(this.signInForm.value)
-    .subscribe(() => {
-        console.log('user connected ')
-        this.ngZone.run(() => this.router.navigateByUrl('/produits'))
-      }, (err) => {
-        console.log(err);
-    });
-  }
+
+login() {
+
+    this.authService.login(this.signInForm.value).subscribe(
+      (res: any) => {
+        this.typeUser=res.data.type;
+        localStorage.setItem('token', res.token);
+        this.router.navigateByUrl('/home')
+      },
+      err=>{  this.errorMessage= err.error();
+
+      });
+}
 
 }
