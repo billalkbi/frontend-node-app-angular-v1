@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import {first} from 'rxjs/operators';
 import { User } from 'src/app/models/users';
@@ -6,7 +6,8 @@ import { UsersService } from 'src/app/services/users.service';
 import { EditUserDialogComponent } from './edit-user/edit-user.dialog.component';
 import { DeleteUserDialogComponent } from './delete-user/delete-user.dialog.component';
 import { AddUserDialogComponent } from './add-user/add-user.dialog.component';
-import { FormControl, FormGroup } from '@angular/forms';
+import { NotificationService } from 'src/app/services/notification.service';
+
 
 
 
@@ -21,7 +22,8 @@ export class UsersComponent implements OnInit {
   dataUsers:User []=[];
   displayedColumns: string[] = ['id', 'firstname', 'lastname', 'adresse', 'dateBirth','typeUser','email', 'username', 'action'];
  constructor(public dialog: MatDialog,
-             private usersService: UsersService) {
+             private usersService: UsersService,
+             protected notificationService : NotificationService) {
              }
 
 ngOnInit(): void {
@@ -54,30 +56,32 @@ getUsers() : void{
 
     dialogRef.afterClosed().subscribe(result => {
       this.isPopupOpened = false;
+      this.getUsers();
+
     });
   }
 
   editUser(id: string) {
     this.isPopupOpened = true;
-        const dialogRef = this.dialog.open(EditUserDialogComponent, {
-      data: id
-
-    });
-    console.log(id);
-    dialogRef.afterClosed().subscribe(result => {
+     const dialogRef = this.dialog.open(EditUserDialogComponent, {
+            data: id
+      });
+   dialogRef.afterClosed().subscribe(result => {
       this.isPopupOpened = false;
+      this.getUsers();
+
     });
   }
 
   deleteUser(id: string) {
     this.isPopupOpened = true;
-        const dialogRef = this.dialog.open(DeleteUserDialogComponent, {
-      data: id
-
-    });
+        const dialogRef = this.dialog.open(DeleteUserDialogComponent, {data: id });
     console.log(id);
+
     dialogRef.afterClosed().subscribe(result => {
       this.isPopupOpened = false;
+      this.getUsers();
+
     });
   }
 

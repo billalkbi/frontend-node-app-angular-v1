@@ -1,6 +1,6 @@
 import { Component,  Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators, } from '@angular/forms';
-
+import {  FormControl, FormGroup, Validators, } from '@angular/forms';
+import { NotificationService } from 'src/app/services/notification.service';
 import { UsersService } from 'src/app/services/users.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -25,14 +25,10 @@ export class EditUserDialogComponent implements OnInit {
 
   })
   constructor(private usersService: UsersService,
+               protected notificationService : NotificationService,
               public dialogRef: MatDialogRef<EditUserDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public id: any
 ) { }
-
-onNoClick(): void {
-  this.dialogRef.close();
- }
-
 
   ngOnInit() {
 
@@ -43,7 +39,7 @@ onNoClick(): void {
           lastname: new FormControl(user['lastname'],[ Validators.required, Validators.minLength(5)]),
           adresse: new FormControl(user['adresse'],[ Validators.required, Validators.minLength(5)]),
           type :new FormControl(user['type'],[ Validators.required]),
-          dateBirth: new FormControl(user['dateBirth'],[ Validators.required,]),
+          dateBirth: new FormControl(new Date(user['dateBirth']),[ Validators.required,]),
            username: new FormControl(user['username'],[ Validators.required, Validators.minLength(5)]),
            email: new FormControl(user['email'],[ Validators.required, Validators.email, Validators.minLength(5)]),
            password: new FormControl(user['password']),
@@ -56,17 +52,23 @@ onNoClick(): void {
  saveEdit() {
 
     this.usersService.updateUser(this.id,this.userEditForm.value)  .subscribe(() => {
-      console.log('Data updated successfully!')
+      console.log('Data updated successfully!');
+      this.notificationService.success('modification terminé');
 
     }, (err) => {
           this.errorMessage=err;
            console.log(this.userEditForm.value);
+           this.notificationService.warn('modification modification echoué veillez résseyer');
        });
 
   this.dialogRef.close();
 
 
   }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+   }
 
 
 

@@ -28,20 +28,19 @@ export class SignupComponent implements OnInit {
       lastname : this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
       dateBirth: this.formBuilder.control("",[ Validators.required]),
       adresse : this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
-      type : this.formBuilder.control("",[ Validators.required]),
+      type : this.formBuilder.control("user",[ Validators.required]),
       username : this.formBuilder.control("",[ Validators.required, Validators.minLength(5)]),
       email : this.formBuilder.control("",[ Validators.required, Validators.email, Validators.minLength(5)]),
       password : this.formBuilder.control("",[ Validators.required, Validators.minLength(10)]),
 
 
     });
-
   }
 
   public saveAdd(): void {
     this.auth.signup(this.signUpForm.value).subscribe(() => {
       console.log('Data added successfully!')
-      this.ngZone.run(() => this.router.navigateByUrl('/users'))
+      this.ngZone.run(() => this.router.navigateByUrl('/signin'))
     }, (err) => {
       this.errorMessage=err;
       console.log(this.signUpForm.value);

@@ -2,6 +2,8 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificationService } from 'src/app/services/notification.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 
 @Component({
   selector: 'node-signin',
@@ -15,7 +17,9 @@ export class SigninComponent implements OnInit  {
    errorMessage: any;
   constructor(private formBuilder : FormBuilder,
               private router: Router,
-              public authService : AuthService) { }
+              protected notificationService : NotificationService,
+              public authService : AuthService,
+              private notifierService : NotifierService) { }
 
 ngOnInit(): void{
   this.signInForm= this.formBuilder.group({
@@ -29,11 +33,13 @@ login() {
 
     this.authService.login(this.signInForm.value).subscribe(
       (res: any) => {
-        this.typeUser=res.data.type;
+
         localStorage.setItem('token', res.token);
+        this.notifierService.refreshLoginStatusFunc();
         this.router.navigateByUrl('/home')
       },
-      err=>{  this.errorMessage= err.error();
+      err=>{  this.errorMessage= err;
+        this.notificationService.warn('echec de connexion veuillez réesseyer!');
 
       });
 }

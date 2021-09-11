@@ -7,6 +7,7 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
 import { ProjectsComponent } from './components/projects/projects.component';
 import { UsersComponent } from './components/users/users.component';
 import { AuthGuard } from './auth/auth.guard';
+import { BubbleChartComponent } from '@swimlane/ngx-charts';
 
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'graph', component: BubbleChartComponent, canActivate: [AuthGuard]},
   {path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
   {path: 'users', component: UsersComponent, canActivate: [AuthGuard]  },
   {path: '**', component: NotFoundComponent}

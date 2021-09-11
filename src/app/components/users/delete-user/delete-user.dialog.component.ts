@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UsersService } from 'src/app/services/users.service';
-
+import { NotificationService } from 'src/app/services/notification.service';
 @Component({
   selector: 'node-delete-user',
   templateUrl: './delete-user.dialog.component.html',
@@ -9,11 +9,12 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class DeleteUserDialogComponent implements OnInit {
   errorMessage: any;
- user: any;
+ user: any= {};
 
 
 
   constructor(private usersService: UsersService,
+              protected notificationService : NotificationService,
               public dialogRef: MatDialogRef<DeleteUserDialogComponent >,
               @Inject(MAT_DIALOG_DATA) public id: any
              ) { }
@@ -28,10 +29,11 @@ export class DeleteUserDialogComponent implements OnInit {
     this.dialogRef.close();
    }
 
-  confirmDelete(id : string){
-    this.usersService.deleteUser(this.id,)
+  confirmDelete(){
+    this.usersService.deleteUser(this.id)
     .subscribe(() => {
-        console.log('Data deleted successfully!')
+
+        this.notificationService.warn('! Deleted successfully');
 
       }, (err) => {
         this.errorMessage=err;

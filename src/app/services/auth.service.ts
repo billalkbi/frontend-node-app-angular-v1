@@ -12,7 +12,6 @@ import { User } from '../models/users';
 export class AuthService {
   REST_API: string = environment.ENDPOINTS.api;
 
-
   constructor(private http: HttpClient) { }
 
 

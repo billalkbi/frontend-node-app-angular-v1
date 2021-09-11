@@ -9,8 +9,8 @@
       <a mat-button routerLink="/">dashboard</a>
       <a mat-button   routerLink="/users">utilisateurs</a>
     </div>
-    <a mat-raised-button color="accent" *ngIf="isLogged==null" routerLink="/signin">se connecter</a>
-    <a mat-raised-button color="accent" *ngIf="isLogged!=null" (click)="LogOut()">se déconnecter</a>
+    <a mat-raised-button color="accent" *ngIf="!isLogged" routerLink="/signin">se connecter</a>
+    <a mat-raised-button color="accent" *ngIf="isLogged" (click)="LogOut()">se déconnecter</a>
 
   </mat-toolbar>
 

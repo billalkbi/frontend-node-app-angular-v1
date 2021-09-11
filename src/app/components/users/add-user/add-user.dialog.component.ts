@@ -1,10 +1,9 @@
-import { Component, Inject, NgZone, OnInit } from '@angular/core';
+import { Component, Inject,  OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { User } from 'src/app/models/users';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'node-add-user.dialog',
@@ -19,10 +18,9 @@ export class AddUserDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<AddUserDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: User,
-              private ngZone: NgZone,
-              private router: Router,
               private formBuilder : FormBuilder,
-              private auth : AuthService) { }
+              private auth : AuthService,
+              protected notificationService : NotificationService,) { }
 
 
 
@@ -45,10 +43,11 @@ export class AddUserDialogComponent implements OnInit {
   public saveAdd(): void {
     this.auth.signup(this.signUpForm.value).subscribe(() => {
       console.log('Data added successfully!')
-      this.ngZone.run(() => this.router.navigateByUrl('/users'))
+
     }, (err) => {
       this.errorMessage=err;
       console.log(this.signUpForm.value);
+      this.notificationService.warn('inscription echoué veillez résseyer');
 
   });
   }

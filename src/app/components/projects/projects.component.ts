@@ -49,6 +49,7 @@ export class ProjectsComponent implements OnInit {
         const dialogRef = this.dialog.open(AddProjectDialogComponent, {});
 
     dialogRef.afterClosed().subscribe(result => {
+      this.getProjects();
       this.isPopupOpened = false;
     });
   }
@@ -61,6 +62,7 @@ export class ProjectsComponent implements OnInit {
     });
     console.log(id);
     dialogRef.afterClosed().subscribe(result => {
+      this.getProjects();
       this.isPopupOpened = false;
     });
   }
@@ -73,6 +75,7 @@ export class ProjectsComponent implements OnInit {
     });
     console.log(id);
     dialogRef.afterClosed().subscribe(result => {
+      this.getProjects();
       this.isPopupOpened = false;
     });
   }
