@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { bubbleData } from 'src/app/data/products';
-
+import { single } from 'src/app/data/products';
 @Component({
-  selector: 'node-bubble-chart',
-  templateUrl: './bubble-chart.component.html',
-  styleUrls: ['./bubble-chart.component.css']
+  selector: 'node-horizontal-bar-chart',
+  templateUrl: './horizontal-bar-chart.component.html',
+  styleUrls: ['./horizontal-bar-chart.component.css']
 })
-export class BubbleChartComponent implements OnInit {
+export class HorizontalBarChartComponent implements OnInit {
 
-  bubbleData: any[] | undefined;
-
+  single: any[] | undefined;
 
   // options
   showXAxis: boolean = true;
@@ -17,31 +15,27 @@ export class BubbleChartComponent implements OnInit {
   gradient: boolean = false;
   showLegend: boolean = true;
   showXAxisLabel: boolean = true;
-  yAxisLabel: string = 'Sales';
+  yAxisLabel: string = 'Country';
   showYAxisLabel: boolean = true;
-  xAxisLabel: string = 'Months';
-  maxRadius: number = 20;
-  minRadius: number = 5;
-  yScaleMin: number = 70;
-  yScaleMax: number = 85;
+  xAxisLabel: string = 'Population';
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
   constructor() {
-    Object.assign(this, { bubbleData });
+    Object.assign(this, { single });
   }
 
-  onSelect(data : any): void {
+  onSelect(data:any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
 
-  onActivate(data : any): void {
+  onActivate(data:any): void {
     console.log('Activate', JSON.parse(JSON.stringify(data)));
   }
 
-  onDeactivate(data : any): void {
+  onDeactivate(data:any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 

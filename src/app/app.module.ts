@@ -22,6 +22,7 @@ import { UsersComponent } from './components/users/users.component';
 import { FormsModule } from '@angular/forms';
 
 //material importations
+import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -34,13 +35,22 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 //projets importations
 import { ProjectsComponent } from './components/projects/projects.component';
 import { DeleteProjectDialogComponent } from './components/projects/delete-project-dialog/delete-project-dialog.component';
 import { EditProjectDialogComponent } from './components/projects/edit-project-dialog/edit-project-dialog.component';
 import { AddProjectDialogComponent } from './components/projects/add-project-dialog/add-project-dialog.component';
 import { BubbleChartComponent } from './Charts/bubble-chart/bubble-chart.component';
-import { LinearGaugeChartComponent } from './Charts/linear-gauge-chart/linear-gauge-chart.component';
+import { PieChartComponent } from './Charts/pie-chart/pie-chart.component';
+import { PieGridChartComponent } from './Charts/pie-grid-chart/pie-grid-chart.component';
+import { VerticalBarChartComponent } from './Charts/vertical-bar-chart/vertical-bar-chart.component';
+import { HorizontalBarChartComponent } from './Charts/horizontal-bar-chart/horizontal-bar-chart.component';
+import { TreeMapChartComponent } from './Charts/tree-map-chart/tree-map-chart.component';
+import { NumberCardChartComponent } from './Charts/number-card-chart/number-card-chart.component';
+import { GaugeChartComponent } from './Charts/gauge-chart/gauge-chart.component';
+
 
 
 @NgModule({
@@ -62,7 +72,14 @@ import { LinearGaugeChartComponent } from './Charts/linear-gauge-chart/linear-ga
     HomeComponent,
     DashboardComponent,
     BubbleChartComponent,
-    LinearGaugeChartComponent
+    PieChartComponent,
+    PieGridChartComponent,
+    VerticalBarChartComponent,
+    HorizontalBarChartComponent,
+    TreeMapChartComponent,
+    NumberCardChartComponent,
+    GaugeChartComponent,
+
 
 
   ],
@@ -83,6 +100,9 @@ import { LinearGaugeChartComponent } from './Charts/linear-gauge-chart/linear-ga
     MatGridListModule,
     MatCardModule,
     MatSnackBarModule,
+    MatDividerModule,
+    MatListModule,
+    MatMenuModule,
     FormsModule,
     NgxChartsModule
 

@@ -17,80 +17,77 @@ export var productSales = [
   }
 ];
 
-
-export var productSalesMulti = [
+export var single = [
   {
-    "name": "book",
+    "name": "Germany",
+    "value": 8940000
+  },
+  {
+    "name": "USA",
+    "value": 5000000
+  },
+  {
+    "name": "France",
+    "value": 7200000
+  },
+  {
+    "name": "UK",
+    "value": 5200000
+  },
+  {
+    "name": "Italy",
+    "value": 7700000
+  },
+  {
+    "name": "Spain",
+    "value": 4300000
+  }
+];
+
+
+export var Multi = [
+  {
+    "name": "Germany",
     "series": [
       {
-        "name": "January",
-        "value": 125
-      }, {
-        "name": "February",
-        "value": 197
-      }, {
-        "name": "March",
-        "value": 209
+        "name": "2010",
+        "value": 7300000
+      },
+      {
+        "name": "2011",
+        "value": 8940000
       }
     ]
-  }, {
-    "name": "graphic card",
+  },
+
+  {
+    "name": "USA",
     "series": [
       {
-        "name": "January",
-        "value": 210
-      }, {
-        "name": "February",
-        "value": 255
-      }, {
-        "name": "March",
-        "value": 203
+        "name": "2010",
+        "value": 7870000
+      },
+      {
+        "name": "2011",
+        "value": 8270000
       }
     ]
-  }, {
-    "name": "desk",
+  },
+
+  {
+    "name": "France",
     "series": [
       {
-        "name": "January",
-        "value": 89
-      }, {
-        "name": "February",
-        "value": 105
-      }, {
-        "name": "March",
-        "value": 66
-      }
-    ]
-  }, {
-    "name": "laptop",
-    "series": [
+        "name": "2010",
+        "value": 5000002
+      },
       {
-        "name": "January",
-        "value": 178
-      }, {
-        "name": "February",
-        "value": 165
-      }, {
-        "name": "March",
-        "value": 144
-      }
-    ]
-  }, {
-    "name": "monitor",
-    "series": [
-      {
-        "name": "January",
-        "value": 144
-      }, {
-        "name": "February",
-        "value": 250
-      }, {
-        "name": "March",
-        "value": 133
+        "name": "2011",
+        "value": 5800000
       }
     ]
   }
-]
+];
 
 export var bubbleData = [
   {

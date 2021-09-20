@@ -33,10 +33,11 @@ login() {
 
     this.authService.login(this.signInForm.value).subscribe(
       (res: any) => {
+        console.log(res.user);
 
         localStorage.setItem('token', res.token);
         this.notifierService.refreshLoginStatusFunc();
-        this.router.navigateByUrl('/home')
+        this.router.navigateByUrl('/home/acceuil')
       },
       err=>{  this.errorMessage= err;
         this.notificationService.warn('echec de connexion veuillez réesseyer!');

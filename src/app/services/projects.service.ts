@@ -11,16 +11,16 @@ import { Project } from '../models/projects';
 export class ProjectsService {
 
   REST_API: string = environment.ENDPOINTS.api
-  usersData : Project[]=[];
+
   constructor(private http: HttpClient) { }
 
   getProjects() {
-    return this.http.get<Project[]>(`${this.REST_API}/projects`)
+    return this.http.get<Project[]>(`${this.REST_API}/projets`)
   }
 
 
   getProject(id: string): Observable<Project> {
-    const url = `${this.REST_API}/projects/${id}`;
+    const url = `${this.REST_API}/projets/${id}`;
     return this.http.get<Project>(url).pipe(
       catchError(this.handleError)
     );
@@ -28,7 +28,7 @@ export class ProjectsService {
   }
 
   addProject(project: Project): Observable<any> {
-    let API_URL = `${this.REST_API}/projects`;
+    let API_URL = `${this.REST_API}/projets`;
     return this.http.post(API_URL,project)
       .pipe(
         catchError(this.handleError)
@@ -37,7 +37,7 @@ export class ProjectsService {
   }
 
   updateProject(id:any, project:Project): Observable<any> {
-    let API_URL = `${this.REST_API}/projects/${id}`;
+    let API_URL = `${this.REST_API}/projets/${id}`;
     return this.http.put(API_URL,project)
       .pipe(
         catchError(this.handleError)
@@ -45,7 +45,7 @@ export class ProjectsService {
   }
 
   deleteProject(id: any){
-    const url = `${this.REST_API}/projects/${id}`;
+    const url = `${this.REST_API}/projets/${id}`;
     return this.http.delete<Project>(url).pipe(
       catchError(this.handleError)
     )
