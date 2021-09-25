@@ -58,7 +58,7 @@ export class EditUserDialogComponent implements OnInit {
         this.userEditForm.controls.adresse.setValue(user['adresse']);
         this.userEditForm.controls.type.setValue(user['type']);
         this.userEditForm.controls.dateBirth.setValue(user['dateBirth']);
-        this.userEditForm.controls.username.setValue(user['username']);
+        this.userEditForm.controls.email.setValue(user['email']);
         this.userEditForm.controls.username.setValue(user['username']);
         this.userEditForm.controls.password.setValue(user['password']);
       })

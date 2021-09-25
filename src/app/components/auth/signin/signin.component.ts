@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { NotifierService } from 'src/app/services/notifier.service';
-
+import { JwtHelperService } from "@auth0/angular-jwt";
 @Component({
   selector: 'node-signin',
   templateUrl: './signin.component.html',
@@ -15,11 +15,10 @@ export class SigninComponent implements OnInit  {
   typeUser:any;
    hide:any= true;
    errorMessage: any;
+   helper = new JwtHelperService();
   constructor(private formBuilder : FormBuilder,
-              private router: Router,
               protected notificationService : NotificationService,
-              public authService : AuthService,
-              private notifierService : NotifierService) { }
+              public authService : AuthService,) { }
 
 ngOnInit(): void{
   this.signInForm= this.formBuilder.group({
@@ -31,18 +30,7 @@ ngOnInit(): void{
 
 login() {
 
-    this.authService.login(this.signInForm.value).subscribe(
-      (res: any) => {
-        console.log(res.user);
-
-        localStorage.setItem('token', res.token);
-        this.notifierService.refreshLoginStatusFunc();
-        this.router.navigateByUrl('/home/acceuil')
-      },
-      err=>{  this.errorMessage= err;
-        this.notificationService.warn('echec de connexion veuillez réesseyer!');
-
-      });
+    this.authService.login(this.signInForm.value);
 }
 
 }

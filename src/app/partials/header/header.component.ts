@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { SigninComponent } from 'src/app/components/auth/signin/signin.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'node-header',
@@ -14,12 +15,14 @@ export class HeaderComponent implements OnInit {
   typeUser:any;
   loginSub: Subscription | undefined;
   constructor( private router: Router,
-    private notifierService : NotifierService
+    private notifierService : NotifierService,
+    private authService : AuthService
               ) {}
 
   ngOnInit(): void {
     this.loginSub=this.notifierService.refreshLoginStatuseNotifier$.subscribe(res=>{
       this.isLogged=localStorage.getItem('token');
+      this.isAdmin();
     })
   }
   LogOut(){
@@ -31,5 +34,10 @@ export class HeaderComponent implements OnInit {
      if(this.loginSub){
        this.loginSub.unsubscribe();
      }
+   }
+
+   isAdmin(): boolean{
+
+    return this.authService.typeUser=='admin'? true: false;
    }
 }

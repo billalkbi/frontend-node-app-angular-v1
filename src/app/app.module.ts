@@ -11,7 +11,7 @@ import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { NotFoundComponent } from './partials/not-found/not-found.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 //users components
 import { EditUserDialogComponent } from './components/users/edit-user/edit-user.dialog.component';
@@ -38,6 +38,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+
 
 
 //projets importations
@@ -88,6 +89,7 @@ import { MatDateFormats, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE 
 
 
 
+
   ],
   imports: [
     BrowserModule,
@@ -109,6 +111,8 @@ import { MatDateFormats, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE 
     MatDividerModule,
     MatListModule,
     MatMenuModule,
+    MatSidenavModule,
+    MatDividerModule,
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
