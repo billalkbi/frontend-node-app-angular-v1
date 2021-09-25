@@ -1,5 +1,6 @@
+<div #containerRef  style="display: block;">
 <ngx-charts-pie-chart
-
+[view]="[containerRef.offsetWidth, 400]"
   [scheme]="colorScheme"
   [results]="single"
   [gradient]="gradient"
@@ -12,3 +13,4 @@
   (deactivate)="onDeactivate($event)"
   >
 </ngx-charts-pie-chart>
+</div>

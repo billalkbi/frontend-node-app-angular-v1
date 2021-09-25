@@ -13,10 +13,10 @@ export class EditProjectDialogComponent implements OnInit {
   hide = true;
   errorMessage: any;
    ProjectEditForm= new FormGroup({
-    id: new FormControl(''),
-    name: new FormControl(''),
-    description: new FormControl(''),
-    created: new FormControl(''),
+    id: new FormControl('',[ Validators.required]),
+    name: new FormControl('',[ Validators.required, Validators.minLength(5)]),
+    description: new FormControl('',[ Validators.required, Validators.minLength(5)]),
+    created: new FormControl('',[ Validators.required]),
 
 
   })
@@ -34,13 +34,12 @@ export class EditProjectDialogComponent implements OnInit {
 
    this.projectsService.getProject(this.id)
     .subscribe(project=>{
-       this.ProjectEditForm= new FormGroup({
-              id: new FormControl(project['id'],[ Validators.required]),
-              name: new FormControl(project['name'],[ Validators.required, Validators.minLength(5)]),
-              description: new FormControl(project['description'],[ Validators.required, Validators.minLength(5)]),
-              created :new FormControl(project['created'],[ Validators.required]),
 
-            })
+        this.ProjectEditForm.controls.id.setValue(project['id']);
+        this.ProjectEditForm.controls.name.setValue(project['name']);
+        this.ProjectEditForm.controls.description.setValue(project['description']);
+        this.ProjectEditForm.controls.created.setValue(project['created']);
+
       })
   }
 

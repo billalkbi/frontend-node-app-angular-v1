@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from './components/auth/signin/signin.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './components/partials/not-found/not-found.component';
+import { NotFoundComponent } from './partials/not-found/not-found.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { UsersComponent } from './components/users/users.component';
-import { AuthGuard } from './auth/auth.guard';
+import { AuthGuard } from './components/auth/auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 

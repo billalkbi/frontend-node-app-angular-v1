@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NotifierService } from 'src/app/services/notifier.service';
-import { SigninComponent } from '../../auth/signin/signin.component';
+import { SigninComponent } from 'src/app/components/auth/signin/signin.component';
 
 @Component({
   selector: 'node-header',

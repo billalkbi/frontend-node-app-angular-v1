@@ -9,7 +9,7 @@ import { bubbleData } from 'src/app/data/products';
 export class BubbleChartComponent implements OnInit {
 
   bubbleData: any[] | undefined;
-
+view:[number, number]=[900,900]
 
   // options
   showXAxis: boolean = true;

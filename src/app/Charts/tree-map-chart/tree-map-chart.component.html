@@ -1,5 +1,6 @@
+<div #containerRef  style="display: block;">
 <ngx-charts-tree-map
-
+  [view]="[containerRef.offsetWidth, 400]"
   [scheme]="colorScheme"
   [results]="single"
   [gradient]="gradient"
@@ -7,3 +8,4 @@
   [labelFormatting]="labelFormatting"
   (select)="onSelect($event)">
 </ngx-charts-tree-map>
+</div>

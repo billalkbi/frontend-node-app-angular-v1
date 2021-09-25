@@ -7,9 +7,9 @@ import { SigninComponent } from './components/auth/signin/signin.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component'
-import { HeaderComponent } from './components/partials/header/header.component';
-import { FooterComponent } from './components/partials/footer/footer.component';
-import { NotFoundComponent } from './components/partials/not-found/not-found.component';
+import { HeaderComponent } from './partials/header/header.component';
+import { FooterComponent } from './partials/footer/footer.component';
+import { NotFoundComponent } from './partials/not-found/not-found.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
@@ -22,6 +22,7 @@ import { UsersComponent } from './components/users/users.component';
 import { FormsModule } from '@angular/forms';
 
 //material importations
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -37,6 +38,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+
+
 //projets importations
 import { ProjectsComponent } from './components/projects/projects.component';
 import { DeleteProjectDialogComponent } from './components/projects/delete-project-dialog/delete-project-dialog.component';
@@ -50,6 +53,8 @@ import { HorizontalBarChartComponent } from './Charts/horizontal-bar-chart/horiz
 import { TreeMapChartComponent } from './Charts/tree-map-chart/tree-map-chart.component';
 import { NumberCardChartComponent } from './Charts/number-card-chart/number-card-chart.component';
 import { GaugeChartComponent } from './Charts/gauge-chart/gauge-chart.component';
+import { MatDateFormats, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+
 
 
 
@@ -82,6 +87,7 @@ import { GaugeChartComponent } from './Charts/gauge-chart/gauge-chart.component'
 
 
 
+
   ],
   imports: [
     BrowserModule,
@@ -103,6 +109,8 @@ import { GaugeChartComponent } from './Charts/gauge-chart/gauge-chart.component'
     MatDividerModule,
     MatListModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule,
     NgxChartsModule
 
